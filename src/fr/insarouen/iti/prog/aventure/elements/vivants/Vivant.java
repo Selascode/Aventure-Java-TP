@@ -199,25 +199,25 @@ public abstract class Vivant extends Entite {
      *
      * @param piece La nouvelle pièce de destination.
      */
-    public void setPiece(Piece piece){
-        if (this.piece == piece)return; 
 
-        if ((this.piece != null)){
+    // APRÈS (corrigé)
+    public void setPiece(Piece piece){
+        if (this.piece == piece) return;
+
+        Piece anciennePiece = this.piece;
+        this.piece = piece;              
+
+        if (anciennePiece != null && anciennePiece.contientVivant(this)){
             try {
-                this.piece.sortir(this);
+                anciennePiece.sortir(this); 
             } catch (VivantAbsentDeLaPieceException e){
                 e.printStackTrace();
             }
-            
         }
 
-        this.piece = piece;
-
-    
         if (piece != null) {
-            this.piece.entrer(this);
+            piece.entrer(this);
         }
-        
     }
 
     /**

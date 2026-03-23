@@ -18,10 +18,10 @@ import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableExceptio
 
 public class Piece extends ElementStructurel{
     /** Tableau dynamique stockant les objets présents dans la pièce. */
-    private Map<String,Objet> Objets = new HashMap<String,Objet>();
+    private Map<String,Objet> Objets ;
     /** Tableau dynamique stockant les vivants présents dans la pièce. */
-    private Map<String,Vivant>  Vivants= new HashMap<String,Vivant>();
-    private Map<String,Porte>  Portes = new HashMap<String,Porte>();
+    private Map<String,Vivant>  Vivants;
+    private Map<String,Porte>  Portes ;
     /**
      * Construit une nouvelle pièce vide.
      *
@@ -30,6 +30,9 @@ public class Piece extends ElementStructurel{
      */
     public Piece(String nom, Monde monde) throws NomDEntiteDejaUtiliseDansLeMondeException{ 
         super(nom,monde);
+        this.Objets = new HashMap<>();
+        this.Vivants = new HashMap<>();
+        this.Portes = new HashMap<>();
     }
     /**
      * Vérifie si la pièce contient un objet spécifique.
@@ -200,9 +203,7 @@ public class Piece extends ElementStructurel{
      * @param porte La porte à ajouter à la pièce.
      */
     protected void addPorte(Porte porte){
-        if (!aLaPorte(porte.getNom())) {
             Portes.put(porte.getNom(), porte);
-        }
 
     }
         

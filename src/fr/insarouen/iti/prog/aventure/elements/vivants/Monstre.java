@@ -31,13 +31,15 @@ public class Monstre extends Vivant {
                 Collection<Porte> portes = this.getPiece().getPortes(); 
 
                 if (!portes.isEmpty()) {
-                    // cherche une porte ouverte ou fermée (OUVERT/FERME)
-                   Porte porte = portes.stream()
-                                        .filter(p -> p.getEtat() == Etat.FERME || p.getEtat() == Etat.OUVERT)
-                                        .findFirst()
-                                        .get();
+                   
+                   Optional<Porte> porteOpt = portes.stream()
+                                                    .filter(p -> p.getEtat() == Etat.FERME || p.getEtat() == Etat.OUVERT)
+                                                    .findFirst();
 
-                    // franchit la porte en l'ouvrant si nécessaire
+                    if (!porteOpt.isPresent()) return; 
+
+                    Porte porte = porteOpt.get();
+
                     if (porte.getEtat() == Etat.FERME) {
                         porte.activer(); 
                     }
@@ -46,12 +48,10 @@ public class Monstre extends Vivant {
                         
                     List<Objet> objetsMonstre= new ArrayList<>(this.getObjets()); 
                     List<Objet> objetsPiece = new ArrayList<>((this.getPiece()).getObjets()); 
-                    // Il dépose SES anciens objets dans la NOUVELLE pièce
                     for (Objet nomObj : objetsMonstre) {
                         this.deposer(nomObj);
                     }
-                    
-                    // Il ramasse les objets initiaux de la NOUVELLE pièce
+                
                     
                     for (Objet objAPrendre : objetsPiece) {
                         try {
