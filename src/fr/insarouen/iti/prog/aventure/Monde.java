@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Collection;
 import java.util.Collections;
+import java.io.Serializable;
 import java.lang.Math;
 
 /**
@@ -22,7 +23,7 @@ import java.lang.Math;
  * à partir de son nom.
  * </p>
  */
-public class Monde{
+public class Monde implements Serializable{
     /** Le nom du monde. */
     private String nom;
     /** Tableau stockant toutes les entités présentes dans ce monde. */
@@ -67,22 +68,7 @@ public class Monde{
      * @throws ArrayIndexOutOfBoundsException (Dans la version actuelle) si l'entité n'est pas trouvée.
      */
     public Entite getEntite(String nomEntite){
-        /**int n = this.tabEntite.length;
-        boolean res = false;
-        int i = 0;
-        while(!res && i<n){
-            if (this.tabEntite[i].getNom() == nomEntite){
-                res = true;
-                return this.tabEntite[i];
-            }
-            i++;
-        }
-        return null; */
-        for(Entite e : this.tabEntite.values())
-            if (e.getNom() == nomEntite){
-                return e;
-            }
-            return null;
+        return this.tabEntite.get(nomEntite); // La Map fait déjà ça correctement
     }
     /**
      * Ajoute une nouvelle entité au monde.

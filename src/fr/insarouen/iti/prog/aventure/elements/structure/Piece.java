@@ -6,6 +6,8 @@ import fr.insarouen.iti.prog.aventure.elements.vivants.Vivant;
 import java.util.*;
 import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
 import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableException;
+import java.io.Serializable;
+
 /**
  * Classe représentant une pièce  du monde.
  * <p>
@@ -16,7 +18,7 @@ import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableExceptio
  */
 
 
-public class Piece extends ElementStructurel{
+public class Piece extends ElementStructurel implements Serializable {
     /** Tableau dynamique stockant les objets présents dans la pièce. */
     private Map<String,Objet> Objets ;
     /** Tableau dynamique stockant les vivants présents dans la pièce. */

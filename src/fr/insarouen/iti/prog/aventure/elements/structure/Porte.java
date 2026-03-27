@@ -12,11 +12,12 @@ import fr.insarouen.iti.prog.aventure.elements.objets.serrurerie.Serrure;
 import fr.insarouen.iti.prog.aventure.elements.objets.serrurerie.Cle;
 import fr.insarouen.iti.prog.aventure.elements.objets.PiedDeBiche;
 import fr.insarouen.iti.prog.aventure.EntiteDejaDansUnAutreMondeException;
+<<<<<<< HEAD
+=======
+import java.io.Serializable;
+>>>>>>> b66aeb1 (Ajot des cha,gement)
 
-
-public class Porte extends ElementStructurel implements Activable {
-    
-
+public class Porte extends ElementStructurel implements Activable, Serializable{
     private Piece pieceA;
     private Piece pieceB;
     private Etat etat ;
@@ -27,6 +28,7 @@ public class Porte extends ElementStructurel implements Activable {
         this.pieceA = pieceA;
         this.pieceB = pieceB;
         this.etat = Etat.FERME;
+<<<<<<< HEAD
         this.pieceA.addPorte(this);
         this.pieceB.addPorte(this);
         
@@ -35,6 +37,14 @@ public class Porte extends ElementStructurel implements Activable {
     public Porte(String nom, Monde monde, Serrure serrure, Piece pieceA, Piece pieceB)
             throws NomDEntiteDejaUtiliseDansLeMondeException,
                 EntiteDejaDansUnAutreMondeException {
+=======
+        if (this.pieceA != null) this.pieceA.addPorte(this);
+        if (this.pieceB != null) this.pieceB.addPorte(this);
+        
+    }
+
+    public Porte(String nom, Monde monde, Serrure serrure, Piece pieceA, Piece pieceB) throws NomDEntiteDejaUtiliseDansLeMondeException {
+>>>>>>> b66aeb1 (Ajot des cha,gement)
 
         super(nom, monde);
         this.serrure = serrure;
@@ -45,7 +55,11 @@ public class Porte extends ElementStructurel implements Activable {
         pieceA.addPorte(this);
         pieceB.addPorte(this);
 
+<<<<<<< HEAD
                 }
+=======
+        }
+>>>>>>> b66aeb1 (Ajot des cha,gement)
 
     public boolean activableAvec(Objet obj){
         if (serrure == null){
