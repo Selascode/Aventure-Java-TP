@@ -9,9 +9,10 @@ import fr.insarouen.iti.prog.aventure.elements.structure.ObjetAbsentDeLaPieceExc
 import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableException;
 import fr.insarouen.iti.prog.aventure.elements.vivants.ObjetNonPossedeParLeVivantException;
 import fr.insarouen.iti.prog.aventure.elements.structure.PorteFermeException;
-import fr.insarouen.iti.prog.aventure.elements.structure.Porte;
+import fr.insarouen.iti.prog.aventure.elements.ActivationException;
 import fr.insarouen.iti.prog.aventure.elements.structure.PorteInexistanteDansLaPieceException;
 import fr.insarouen.iti.prog.aventure.elements.vivants.ObjetNonPossedeParLeVivantException;
+import fr.insarouen.iti.prog.aventure.elements.structure.Porte;
 import java.io.Serializable;
 import java.util.*;
 import java.lang.Class;
