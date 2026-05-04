@@ -7,9 +7,9 @@ import fr.insarouen.iti.prog.aventure.elements.Etat;
 import fr.insarouen.iti.prog.aventure.elements.ActivationImpossibleAvecObjetException;
 import fr.insarouen.iti.prog.aventure.elements.ActivationImpossibleException;
 import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
-import java.io.Serializable;
 
-public class Serrure extends Objet implements Activable,Serializable{
+
+public class Serrure extends Objet implements Activable{
 
     private Etat etat;
     private Cle cle = null; 

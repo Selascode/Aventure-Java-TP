@@ -12,12 +12,9 @@ import fr.insarouen.iti.prog.aventure.elements.objets.serrurerie.Serrure;
 import fr.insarouen.iti.prog.aventure.elements.objets.serrurerie.Cle;
 import fr.insarouen.iti.prog.aventure.elements.objets.PiedDeBiche;
 import fr.insarouen.iti.prog.aventure.EntiteDejaDansUnAutreMondeException;
-<<<<<<< HEAD
-=======
 import java.io.Serializable;
->>>>>>> b66aeb1 (Ajot des cha,gement)
 
-public class Porte extends ElementStructurel implements Activable, Serializable{
+public class Porte extends ElementStructurel implements Activable{
     private Piece pieceA;
     private Piece pieceB;
     private Etat etat ;
@@ -28,38 +25,22 @@ public class Porte extends ElementStructurel implements Activable, Serializable{
         this.pieceA = pieceA;
         this.pieceB = pieceB;
         this.etat = Etat.FERME;
-<<<<<<< HEAD
-        this.pieceA.addPorte(this);
-        this.pieceB.addPorte(this);
-        
-    }
-
-    public Porte(String nom, Monde monde, Serrure serrure, Piece pieceA, Piece pieceB)
-            throws NomDEntiteDejaUtiliseDansLeMondeException,
-                EntiteDejaDansUnAutreMondeException {
-=======
         if (this.pieceA != null) this.pieceA.addPorte(this);
         if (this.pieceB != null) this.pieceB.addPorte(this);
         
     }
 
     public Porte(String nom, Monde monde, Serrure serrure, Piece pieceA, Piece pieceB) throws NomDEntiteDejaUtiliseDansLeMondeException {
->>>>>>> b66aeb1 (Ajot des cha,gement)
 
         super(nom, monde);
         this.serrure = serrure;
         this.pieceA = pieceA;
         this.pieceB = pieceB;
-
         etat = Etat.VERROUILLE;
         pieceA.addPorte(this);
         pieceB.addPorte(this);
 
-<<<<<<< HEAD
-                }
-=======
         }
->>>>>>> b66aeb1 (Ajot des cha,gement)
 
     public boolean activableAvec(Objet obj){
         if (serrure == null){
@@ -123,14 +104,10 @@ public class Porte extends ElementStructurel implements Activable, Serializable{
      * @param piece La piece dont on cherche l'autre coté.
      * @return La piece correspondante si elle est trouvée, {@code null} sinon.
      */
-    public Piece getPieceAutreCote(Piece piece){
-        if(this.pieceA.equals(piece)){
-            return this.pieceB;
-        }else if (this.pieceB.equals(piece)){
-            return this.pieceA;
-        } else {
-            return null; 
-        }
+    public Piece getPieceAutreCote(Piece piece) {
+    if (piece != null && piece.equals(this.pieceA)) return this.pieceB;
+    if (piece != null && piece.equals(this.pieceB)) return this.pieceA;
+    return null;
     }
 
     public Serrure getSerrure(){

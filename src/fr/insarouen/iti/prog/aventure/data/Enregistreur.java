@@ -1,15 +1,10 @@
 package fr.insarouen.iti.prog.aventure.data;
-<<<<<<< HEAD
-import fr.insarouen.iti.prog.aventure.Monde;
-import java.lang.Throwable;
 
-public interface Enregistreur{
-    public abstract void enregistrer(Monde monde) throws Throwable;
-=======
+import java.util.Collection;
 
 import fr.insarouen.iti.prog.aventure.Monde;
+import fr.insarouen.iti.prog.aventure.conditions.ConditionDeFin;
 
 public interface Enregistreur{
-    public void enregistrer(Monde monde) throws Throwable;
->>>>>>> b66aeb1 (Ajot des cha,gement)
+    public abstract void enregistrer(Monde monde, Collection<ConditionDeFin> conditionsDeFin) throws Throwable;
 }

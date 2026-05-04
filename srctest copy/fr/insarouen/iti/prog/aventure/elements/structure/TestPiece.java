@@ -15,7 +15,7 @@ import fr.insarouen.iti.prog.aventure.elements.TableauDynamique;
 import fr.insarouen.iti.prog.aventure.elements.objets.Objet;
 import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableException;
 import fr.insarouen.iti.prog.aventure.elements.objets.PiedDeBiche;
-
+import fr.insarouen.iti.prog.aventure.ITIAventureException;
 public class TestPiece{
     private Piece p1;    
     private Piece p2;
@@ -166,6 +166,10 @@ class VivantC extends Vivant {
     public VivantC(String nom, Monde monde, int pointVie, int pointForce, Piece piece, Objet... objets) throws NomDEntiteDejaUtiliseDansLeMondeException {
         super(nom, monde, pointVie, pointForce, piece, objets);
     }
+    @Override
+	public void executer() throws ITIAventureException {
+		throw new UnsupportedOperationException("Unimplemented method 'executer'");
+	}
 }
 
 

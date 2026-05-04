@@ -23,6 +23,8 @@ import fr.insarouen.iti.prog.aventure.elements.structure.VivantAbsentDeLaPieceEx
 import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableException;
 import fr.insarouen.iti.prog.aventure.elements.structure.ObjetAbsentDeLaPieceException;
 import fr.insarouen.iti.prog.aventure.elements.vivants.ObjetNonPossedeParLeVivantException;
+import fr.insarouen.iti.prog.aventure.ITIAventureException;
+
 
 public class TestVivant{
     private Monde monde1; 
@@ -170,4 +172,8 @@ class VivantC extends Vivant {
     public VivantC(String nom, Monde monde, int pointVie, int pointForce, Piece piece, Objet... objets) throws NomDEntiteDejaUtiliseDansLeMondeException {
         super(nom, monde, pointVie, pointForce, piece, objets);
     }
+    @Override
+	public void executer() throws ITIAventureException {
+		throw new UnsupportedOperationException("Unimplemented method 'executer'");
+	}
 }

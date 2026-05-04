@@ -2,8 +2,8 @@ package fr.insarouen.iti.prog.aventure.data;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Scanner;
 import java.io.File;
+import java.util.*;
 
 import fr.insarouen.iti.prog.aventure.Monde;
 import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
@@ -13,12 +13,17 @@ import fr.insarouen.iti.prog.aventure.elements.structure.Piece;
 import fr.insarouen.iti.prog.aventure.elements.structure.Porte;
 import fr.insarouen.iti.prog.aventure.elements.vivants.JoueurHumain;
 import fr.insarouen.iti.prog.aventure.elements.vivants.Monstre;
+import fr.insarouen.iti.prog.aventure.elements.vivants.Vivant;
 import fr.insarouen.iti.prog.aventure.EntiteDejaDansUnAutreMondeException;
+import fr.insarouen.iti.prog.aventure.conditions.ConditionDeFin;
+import fr.insarouen.iti.prog.aventure.conditions.ConditionDeFinVivantDansPiece;
+import fr.insarouen.iti.prog.aventure.conditions.EtatDuJeu;
 
 
 public class LecteurDescription extends Object implements Lecteur {
 
     private Monde monde;
+    private List<ConditionDeFin> conditions = new ArrayList<>();
 
     public LecteurDescription(Reader reader) throws IOException, NomDEntiteDejaUtiliseDansLeMondeException , EntiteDejaDansUnAutreMondeException{
         Scanner scanner = new Scanner(reader);
@@ -47,12 +52,18 @@ public class LecteurDescription extends Object implements Lecteur {
             case "Monstre":
                 this.lireMonstre(scanner);
                 break;
+            case "ConditionDeFinVivantDansPiece" : 
+                this.lireConditionFinVivantDansPiece(scanner); 
+                break; 
+       
  }
 
             
         }
         scanner.close();
     }
+
+   
 
     private void lireMonde(Scanner scanner) {
         this.monde = new Monde(scanner.next());
@@ -112,5 +123,14 @@ public class LecteurDescription extends Object implements Lecteur {
     public Monde getMonde() {
         return this.monde;
  }
+
+    private void lireConditionFinVivantDansPiece(Scanner scanner) {
+        this.conditions.add(new ConditionDeFinVivantDansPiece(EtatDuJeu.valueOf(scanner.next()), (Vivant)this.monde.getEntite(scanner.next()),(Piece)this.monde.getEntite(scanner.next())));
+    }
+
+    @Override
+    public List<ConditionDeFin> getConditionsDeFin(){
+        return this.conditions;
+    }
 
 }

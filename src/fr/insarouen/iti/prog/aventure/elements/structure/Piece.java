@@ -18,7 +18,7 @@ import java.io.Serializable;
  */
 
 
-public class Piece extends ElementStructurel implements Serializable {
+public class Piece extends ElementStructurel{
     /** Tableau dynamique stockant les objets présents dans la pièce. */
     private Map<String,Objet> Objets ;
     /** Tableau dynamique stockant les vivants présents dans la pièce. */

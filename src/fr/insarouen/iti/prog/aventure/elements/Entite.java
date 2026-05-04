@@ -3,6 +3,7 @@ import fr.insarouen.iti.prog.aventure.Monde;
 import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
 import fr.insarouen.iti.prog.aventure.EntiteDejaDansUnAutreMondeException;
 import java.lang.Object;
+import java.io.Serializable;
 import java.lang.Error;
 
 /**
@@ -13,11 +14,12 @@ import java.lang.Error;
  * (Objets, Vivants, Éléments structurels) héritent de cette classe.
  * </p>
  */
-public abstract class Entite{
+public abstract class Entite extends Object implements Serializable{
     /** Le nom de l'entité. */
     private String nom;
     /** Le monde auquel l'entité appartient. */
     private Monde monde;
+
     /**
      * Construit une nouvelle entité.
      * <p>
@@ -67,7 +69,7 @@ public abstract class Entite{
     public boolean equals(Object obj){
 
         // Tests de la classe 
-        if (obj== null || this.getClass() != obj.getClass()) {
+        if (obj == null || !(this.getClass().equals(obj.getClass()) )) {
         return false; 
         }
         // Transtipage

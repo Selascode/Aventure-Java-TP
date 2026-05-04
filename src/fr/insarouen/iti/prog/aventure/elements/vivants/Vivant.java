@@ -9,7 +9,10 @@ import fr.insarouen.iti.prog.aventure.elements.structure.Piece;
 import fr.insarouen.iti.prog.aventure.elements.structure.Porte;
 import fr.insarouen.iti.prog.aventure.elements.structure.PorteFermeException;
 import fr.insarouen.iti.prog.aventure.elements.structure.PorteInexistanteDansLaPieceException;
-import fr.insarouen.iti.prog.aventure.Monde; 
+import fr.insarouen.iti.prog.aventure.elements.Executable;
+import fr.insarouen.iti.prog.aventure.Monde;
+
+import java.io.Serializable;
 import java.util.*;
 import fr.insarouen.iti.prog.aventure.elements.structure.ObjetAbsentDeLaPieceException;
 import fr.insarouen.iti.prog.aventure.elements.vivants.ObjetNonPossedeParLeVivantException;
@@ -24,13 +27,14 @@ import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
  * physiques comme des points de vie et de force.
  * </p>
  */
-public abstract class Vivant extends Entite {
+public abstract class Vivant extends Entite implements Executable{
     /***************** */
     /* Les accesseurs  */
     /***************** */
     private int pointVie;
     private int pointForce;
     private Piece piece;
+   
     /**private TableauDynamique objets;*/
     private Map<String,Objet> objets = new HashMap<String,Objet>();
 
@@ -322,7 +326,9 @@ public abstract class Vivant extends Entite {
         if (porte.getEtat().equals(Etat.FERME)){
             throw new PorteFermeException("La porte "+ porte.getNom()+" est fermé coco");
         }
-        porte.getPieceAutreCote(this.getPiece()).entrer(this);
+        Piece destination = porte.getPieceAutreCote(this.getPiece());
+        if(destination == null) return; 
+        destination.entrer(this);
     }
 
     /**

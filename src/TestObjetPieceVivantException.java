@@ -3,7 +3,6 @@ import fr.insarouen.iti.prog.aventure.NomDEntiteDejaUtiliseDansLeMondeException;
 import fr.insarouen.iti.prog.aventure.ITIAventureException;
 //import fr.insarouen.iti.prog.aventure.elements.objets.Coffre;
 import fr.insarouen.iti.prog.aventure.elements.objets.Objet;
-import fr.insarouen.iti.prog.aventure.elements.objets.ObjetNonDeplacableException;
 import fr.insarouen.iti.prog.aventure.elements.objets.PiedDeBiche;
 import fr.insarouen.iti.prog.aventure.elements.structure.ObjetAbsentDeLaPieceException;
 import fr.insarouen.iti.prog.aventure.elements.structure.Piece;
@@ -129,6 +128,12 @@ public class TestObjetPieceVivantException {
     static class VivantConcret extends Vivant {
 	public VivantConcret(String nom, Monde monde, int pointVie, int pointForce, Piece piece, Objet... objets) throws NomDEntiteDejaUtiliseDansLeMondeException {
 	    super(nom, monde, pointVie, pointForce, piece, objets);
+	}
+
+	@Override
+	public void executer() throws ITIAventureException {
+		// TODO Auto-generated method stub
+		throw new UnsupportedOperationException("Unimplemented method 'executer'");
 	}
     }
 

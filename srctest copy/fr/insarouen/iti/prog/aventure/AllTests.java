@@ -11,7 +11,7 @@ import fr.insarouen.iti.prog.aventure.elements.vivants.TestMonstre;
 import fr.insarouen.iti.prog.aventure.elements.vivants.TestVivant;
 import fr.insarouen.iti.prog.aventure.TestMonde; 
 import fr.insarouen.iti.prog.aventure.elements.structure.TestPorte;
-
+import fr.insarouen.iti.prog.aventure.elements.conditions.TestConditionDeFinVivantDansPieceEtPossedeObjets; 
 
 @RunWith(Suite.class)
 @SuiteClasses({
@@ -21,6 +21,7 @@ import fr.insarouen.iti.prog.aventure.elements.structure.TestPorte;
     TestMonstre.class,
     TestMonde.class,
     TestPorte.class,
-    TestSerrure.class
+    TestSerrure.class,
+    TestConditionDeFinVivantDansPieceEtPossedeObjets.class
 })
 public class AllTests {}
